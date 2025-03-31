@@ -30,3 +30,10 @@ pip freeze >> requirements.txt
 `Media Root` 설정
 `Media URL` 
 `settings.py` 에서 
+
+```shell
+> django resized
+: pip install django-resized
+> django 부트스트랩 적용시키기
+: pip install django-bootstrap5
+```
