@@ -37,3 +37,7 @@ pip freeze >> requirements.txt
 > django 부트스트랩 적용시키기
 : pip install django-bootstrap5
 ```
+
+
+image를 Create하는 게시물을 만들어주고, accounts라는 앱을 추가해줬다. 
+
