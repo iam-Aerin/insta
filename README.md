@@ -15,3 +15,7 @@ posts.Post.image: (fields.E210) Cannot use ImageField because Pillow is not inst
 ```
 
 `ImageField`를 사용하려면 `python -m pip install Pillow`
+
+image폴더가 생성됨
+> 그 폴더 또한  .gitignore에 포함한다. 
+- 마지막 줄에 `image/`를 추가해 .gitignore 파일을 수정했다. 
