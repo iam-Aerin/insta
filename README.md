@@ -25,3 +25,8 @@ image폴더가 생성됨
 pip freeze >> requirements.txt
 ```
 > 코드를 작성하다가 새로운 라이브러리가 추가된 상황이라면 그때 또 다시 위 코드로 업데이트를 시켜줘야함. 
+
+데이터 베이스가 이미지를 직접 저장하는게 아니라 그 이미지 파일의 경로를 저장한다. 
+`Media Root` 설정
+`Media URL` 
+`settings.py` 에서 
