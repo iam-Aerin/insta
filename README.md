@@ -41,3 +41,8 @@ pip freeze >> requirements.txt
 
 image를 Create하는 게시물을 만들어주고, accounts라는 앱을 추가해줬다. 
 
+```shell
+git commit --amend
+```
+해서 commit내용 수정
+> i로 insert 후 내용 수정 -> esc -> :wq로 나오기기
