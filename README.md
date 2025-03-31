@@ -19,3 +19,9 @@ posts.Post.image: (fields.E210) Cannot use ImageField because Pillow is not inst
 image폴더가 생성됨
 > 그 폴더 또한  .gitignore에 포함한다. 
 - 마지막 줄에 `image/`를 추가해 .gitignore 파일을 수정했다. 
+
+만일 이 파일을 다시 clone 해서 쓸 때 어떤 라이브러리들이 필요한지를 알려주도록
+```shell
+pip freeze >> requirements.txt
+```
+> 코드를 작성하다가 새로운 라이브러리가 추가된 상황이라면 그때 또 다시 위 코드로 업데이트를 시켜줘야함. 
