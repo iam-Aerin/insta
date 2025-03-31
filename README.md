@@ -45,4 +45,10 @@ image를 Create하는 게시물을 만들어주고, accounts라는 앱을 추가
 git commit --amend
 ```
 해서 commit내용 수정
-> i로 insert 후 내용 수정 -> esc -> :wq로 나오기기
+> i로 insert 후 내용 수정 -> esc -> :wq로 나오기
+
+> USER 정보 . 프로필 이미지 출력
+> Bootstrap 아이콘 삽입하는 방법
+```shell
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+```
