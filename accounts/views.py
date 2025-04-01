@@ -3,6 +3,8 @@ from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from .models import User
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def signup(request):
@@ -39,6 +41,7 @@ def login(request):
 
 
 # logout 기능 함수 구현
+@login_required
 def logout(request):
     auth_logout(request)
     return redirect('posts:index')  
@@ -51,3 +54,25 @@ def profile(request, username):
         'user_profile': user_profile,
     }
     return render(request, 'profile.html', context)
+
+# follow 함수 구현하기
+@login_required
+def follow(request, username):
+    me = request.user
+    you = User.objects.get(username=username)
+    
+    
+    if me == you:
+        return redirect('accounts:profile', username)
+    else:
+        #    
+        if me in you.followers.all():
+        # if you in me.following.all():
+            you.followers.remove(me)
+            # me.following.remove(you)
+        else:
+            you.followers.add(me)
+            # me.following.add(you)
+        
+        return redirect('accounts:profile', username)
+
