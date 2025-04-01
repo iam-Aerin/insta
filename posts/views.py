@@ -53,3 +53,31 @@ def comment_create(request, post_id):
     # else:
     #     return redirect('posts:index')
     
+# Like 함수 구현하기 (게시물 관점으로)
+# def like(request, post_id):
+#     user = request.user
+#     post = Post.objects.get(id=post_id)
+    
+#     if post in user.like_posts.all:
+#         user.like_posts.remove(post)
+#     else:
+#         user.like_posts.add(post)
+        
+#     return redirect('posts:index')
+
+# Like 함수 구현하기 (user 관점으로)
+@login_required
+def like(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    
+    if user in post.like_users.all():
+        post.like_users.remove(user)
+    else:
+        post.like_users.add(user)
+        
+    return redirect('posts:index')
+
+
+    
+
