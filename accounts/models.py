@@ -21,3 +21,12 @@ class User(AbstractUser):
     # N:M 관계의 like_posts(MMF) 가 탄생함. 
     
     # => db에 posts_post_like_user라는 테이블이 생김. (user_id와 post_id를 저장함)
+
+# following
+    followings = models.ManyToManyField('self', symmetrical=False, related_name='followers')
+    #user_set (followers)
+    # 단방향이므로 symmetrical=False
+    # 자기 자신과 연결된 관계는 무시함.
+    # related_name = 'followings'로 설정하면
+    # user_set (followings)가 생김. (user_id와 post_id를 저장함)
+   
