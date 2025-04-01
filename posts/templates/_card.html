@@ -32,5 +32,10 @@
       </div>
     </form>
     {% endif %}
+    <div class="mt-3">
+      {% for comment in post.comment_set.all %}
+      <li>{{comment.user}} : {{comment.content}} </li>
+      {% endfor %}
+    </div>
   </div>
 </div>
