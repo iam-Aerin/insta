@@ -79,5 +79,3 @@ def like(request, post_id):
     return redirect('posts:index')
 
 
-    
-
