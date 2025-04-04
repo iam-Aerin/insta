@@ -6,4 +6,39 @@
              {% include '_card.html' %}
         {% endfor %}
     </div>
+    <script>
+        let likeBtns = document.querySelectorAll('i.like')
+        
+         // 비동기 함수
+        let likeRequest = async (btn, postId) => {
+            let likeURL = `/posts/${postId}/like-async`
+            
+            let res = await fetch(likeURL)
+
+            let result = await res.json()
+
+            if (result.status) {
+                btn.style.color = 'red'
+                btn.classList.remove('bi-suit-heart')
+                btn.classList.add('bi-suit-heart-fill')
+                
+            } else {
+                btn.style.color = 'black'
+                btn.classList.remove('bi-suit-heart-fill')
+                btn.classList.add('bi-suit-heart')
+            }
+            btn.querySelector('span').innerHTML = result.count
+        }
+        
+        likeBtns.forEach(function(likeBtn){
+            likeBtn.addEventListener('click', function(e){
+                const postId = e.target.dataset.postId
+                // data라고 붙은 속성 (_card.html에서 data-post-id로 붙은 속성)
+                 likeRequest(likeBtn, postId)
+    
+            })
+        })  
+
+       
+    </script>
 {% endblock %}

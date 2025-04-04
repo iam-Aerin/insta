@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -79,3 +80,33 @@ def like(request, post_id):
     return redirect('posts:index')
 
 
+# 팔로잉 중인 게시물들
+def feed(request):
+    followings = request.user.followings.all() # 내가 팔로우한 사람들의 user들
+    posts = Post.objects.filter(user__in=followings) # 내가 팔로우하는 사람들이 작성한 게시물
+    form = CommentForm()
+    context = {
+        'posts' : posts,
+        'form' : form,
+    }
+    
+    return render(request, 'index.html', context)
+
+# like-async 함수 만들기 (index, card, url 다 바꾸고 옴)
+def like_async(request, id):
+    user = request.user
+    post = Post.objects.get(id=id)
+    
+    if user in post.like_users.all():
+        post.like_users.remove(user)
+        status = False
+    else:
+        post.like_users.add(user)
+        status = True
+    # index 페이지로 edirect 하는게 아니라 json 데이터를 넘겨주자
+    context = {
+        'post_id' : id,
+        'status' : status,
+        'count' : len(post.like_users.all())
+    } # Dictionary를 json에서 쓸 수 있는 형식으로 바꿔주기
+    return JsonResponse(context)

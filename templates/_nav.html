@@ -1,28 +1,29 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      
-        <a class="navbar-brand" href="{% url 'posts:index' %}">
-        <i class="bi bi-instagram"></i>
-        Instagram
-        </a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="height: 80px; font-size: 1.25rem;">
+  <div class="container-fluid">
+    
+      <a class="navbar-brand" href="{% url 'posts:index' %}">
+      <i class="bi bi-instagram"></i>
+      Instagram
+      </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-        {% if user.is_authenticated %}
-        <a class="nav-link active" aria-current="page" href="{% url 'posts:create' %}">📑Create</a>
-        <a class="nav-link" href="{% url 'accounts:logout' %}">🐣Logout</a>
-        <a class="nav-link disabled" aria-disabled="true">{{user}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+      {% if user.is_authenticated %}
+      <a class="nav-link active" aria-current="page" href="{% url 'posts:create' %}">📑Create</a>
+      <a class="nav-link" href="{% url 'accounts:logout' %}">🐣Logout</a>
+      <a class="nav-link" href="{% url 'posts:feed' %}"> 내 관심사💕</a>
+      <a class="nav-link disabled" aria-disabled="true">{{user}}</a>
 
-        {% else %}
-        <a class="nav-link" href="{% url 'accounts:signup' %}">🔑Signup</a>
-        <a class="nav-link" href="{% url 'accounts:login' %}">🧛‍♂️Login</a>
-        {% endif %}
+      {% else %}
+      <a class="nav-link" href="{% url 'accounts:signup' %}">🔑Signup</a>
+      <a class="nav-link" href="{% url 'accounts:login' %}">🧛‍♂️Login</a>
+      {% endif %}
 
-          
-        </div>
+        
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
